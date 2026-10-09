@@ -31,6 +31,7 @@ async def get_session():
     async with SessionLocal() as session:
         yield session
 
+
 async def get_current_user(session: AsyncSession = Depends(get_session), token: str = Depends(oauth2_scheme)):
     try:
         payload = jwt.decode(token, secret_key, algorithms=[algorithm])
@@ -59,4 +60,12 @@ async def get_current_user(session: AsyncSession = Depends(get_session), token: 
     except (InvalidTokenError, TypeError, ValueError):
         raise HTTPException(status_code=401, detail='Invalid Credentials') 
 
-        
+
+async def get_current_admin(user: User = Depends(get_current_user)):
+    if user.role != 'admin':
+        raise HTTPException(status_code=403, detail='Forbidden') 
+
+    return user 
+    
+
+    
