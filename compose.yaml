@@ -9,7 +9,7 @@ services:
     env_file:
       - .env 
     environment:
-      DATABASE_URL: "postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/Event%20Booking%20API" #%20 в URL кодируются как пробилы
+      DATABASE_URL: "postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/event_booking_api"
     command: >
       sh -c "alembic upgrade head && exec uvicorn main:app --host 0.0.0.0 --port 8000"
   postgres:

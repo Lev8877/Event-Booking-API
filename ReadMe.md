@@ -60,7 +60,7 @@ requirements.txt  Зависимости Python
 Экземпляр:
 
 ```dotenv
-DATABASE_URL=postgresql+asyncpg://postgres:change_me@localhost:5432/Event%20Booking%20API
+DATABASE_URL=postgresql+asyncpg://postgres:change_me@localhost:5432/event_booking_api
 TEST_DATABASE_URL=postgresql+asyncpg://postgres:change_me@localhost:5432/event_booking_test
 SECRET_KEY=replace_with_random_secret
 ALGORITHM=your_algorithm
@@ -69,12 +69,10 @@ REFRESH_TOKEN_EXPIRE_DAYS=58
 
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=change_me
-POSTGRES_DB=Event Booking API
+POSTGRES_DB=event_booking_api
 ```
 
 Для локального запуска укажите адрес своей PostgreSQL в DATABASE_URL. Для тестов используйте отдельную базу данных в TEST_DATABASE_URL.
-
-Название основной базы содержит пробелы, поэтому в URL используется %20.
 
 Файл .env не должен попадать в Git.
 
@@ -88,7 +86,7 @@ docker compose up --build
 
 При запуске создаются контейнеры FastAPI и PostgreSQL. Миграции Alembic применяются автоматически.
 
-Swagger: http://localhost:8000/docs
+Swagger: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 Остановить и удалить контейнеры:
 
@@ -100,7 +98,7 @@ docker compose down
 
 ## Локальный запуск
 
-Установите Python 3.13 и PostgreSQL, создайте базу данных и настройте .env.
+Установите Python 3.13 и PostgreSQL, создайте базу данных event_booking_api и настройте .env.
 
 Создать виртуальное окружение и установить зависимости:
 
@@ -122,7 +120,7 @@ py -m alembic upgrade head
 uvicorn main:app --reload
 ```
 
-Swagger: http://localhost:8000/docs
+Swagger: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ## Тесты
 
