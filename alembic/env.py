@@ -29,7 +29,7 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-config.set_main_option("sqlalchemy.url", database_url)
+config.set_main_option("sqlalchemy.url", database_url.replace("%", "%%")) #Название Event Booking API записано через пробилы, поэтому чтобы ConfigParser корректно считал название с пробилами нужно сделать replace
 
 # add your model's MetaData object here
 # for 'autogenerate' support

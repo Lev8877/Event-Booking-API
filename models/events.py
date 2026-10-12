@@ -24,4 +24,4 @@ class Event(Base):
     max_participants: Mapped[int] = mapped_column()
     created_at: Mapped[datetime] = mapped_column(default=datetime.now)
 
-    bookings: Mapped[list['Booking']] = relationship(back_populates='event')
+    bookings: Mapped[list['Booking']] = relationship(back_populates='event', passive_deletes=True)
